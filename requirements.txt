@@ -1,0 +1,5 @@
+langchain
+llama-cpp-python
+pymupdf
+pandas 
+numpy

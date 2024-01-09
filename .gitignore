@@ -1,0 +1,5 @@
+__pycache__
+models/
+pdf-test.ipynb
+.DS_Store
+ignore_*
