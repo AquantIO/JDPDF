@@ -14,7 +14,7 @@ def create_pdf_outline(file: str) -> pd.DataFrame:
     pdfprocessor = PdfOutlineProcessor(file)
     titles_df = pdfprocessor.extract_outline()
     # add columns
-    dtc_mask = (titles_df['H2'] == 'Diagnostic Trouble Codes') & (
+    dtc_mask = (titles_df['H2'].isin(['Diagnostic Trouble Codes', 'Diagnostic Service Codes'])) & (
         titles_df['H4'] != '')
     titles_df['pdf_file_name'] = os.path.basename(file)
     titles_df['next_section_page_num'] = titles_df['page_num'].shift(-1)

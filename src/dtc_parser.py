@@ -32,7 +32,7 @@ class DtcParser:
         }
     """
     NEWLINE = '\n'
-    DTC_PATTERN = r'(\w{2,3} ?[A-Z0-9]{6}\.[A-Z0-9]{2}).*'
+    DTC_PATTERN = r'(\w{2,3} ?[A-Z0-9]{6,7}[-\.][A-Z0-9]{1,2}).*'
     REGEX_OPTIONAL_NEWLINE = '[ \n]'
     ESCAPED_SPACE = '\\ '
 
