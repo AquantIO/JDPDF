@@ -44,7 +44,9 @@ class DtcParser:
 
     def _get_pages_html(self, start, stop) -> str:
         all_html_pages = []
-        for page_idx in range(start, stop + 1):
+        # increase stop to include the end page and the page after
+        stop += 2
+        for page_idx in range(start, stop):
             page_html = self.pdf_document.load_page(page_idx).get_text('html')
             all_html_pages.append(page_html)
         return self.NEWLINE.join(all_html_pages)
@@ -116,7 +118,9 @@ class DtcParser:
 
     def _get_pages_blocks(self, start, stop) -> List[str]:
         all_blocks = []
-        for page_idx in range(start, stop + 1):
+        # increase stop to include the end page and the page after
+        stop += 2
+        for page_idx in range(start, stop):
             page_blocks = self.pdf_document.load_page(
                 page_idx).get_text('blocks')
             page_blocks_txt = [b[4] for b in page_blocks]
@@ -231,9 +235,9 @@ class DtcParser:
 
 
 if __name__ == '__main__':
-    fpath = '/Users/shaked/Downloads/6M_6R Diagnostic and Test Manuals/TM410319.pdf'
+    fpath = '/Users/shaked/Downloads/6M_6R Diagnostic and Test Manuals/TM411919.pdf'
     with fitz.open(fpath) as pdf_document:
         dtc_parser = DtcParser(pdf_document)
-        sols = dtc_parser.parse_dtc(176, 176, 'AIC 000158.03 — Supply Voltage (ELX) Too High',
-                                              'AIC 000158.04 — Supply Voltage (ELX) Too Low')
+        sols = dtc_parser.parse_dtc(170, 170, 'ABV 000629.12 — Control Software, Internal Fault',
+                                              'ABV 000841.07 — GPS Lock Fault')
         print(sols)
