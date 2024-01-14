@@ -65,5 +65,5 @@ if __name__ == '__main__':
                 dtc_data = pd.DataFrame(all_records, columns=TARGET_COLUMNS)
                 results = pd.concat([results, dtc_data], ignore_index=True)
 
-    results.to_csv('/users/shaked/downloads/test.csv',
+    results.to_csv('/users/shaked/downloads/jd_pdf_pairs.csv',
                    index=False, encoding='utf-8-sig')
